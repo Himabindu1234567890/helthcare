@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurePet - Pet Healthcare</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 20px 0;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .hero .btn {
+            background: #FFC107;
+            color: black;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .services h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* About Us Section */
+        .about {
+            background: #f4f4f4;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact form input, .contact form textarea {
+            width: 100%;
+            max-width: 500px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact form button {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Pet Dropdown and Card */
+        .pet-section {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .pet-dropdown {
+            margin-bottom: 20px;
+        }
+
+        .pet-dropdown select {
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .pet-card {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .pet-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .pet-card p {
+            margin: 5px 0;
+        }
+
+        /* Chatbot Styles */
+        .chatbot-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .chatbot-icon img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .chatbot-window {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+
+        .chatbot-header {
+            background: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            text-align: center;
+        }
+
+        .chatbot-body {
+            padding: 10px;
+            height: 200px;
+            overflow-y: auto;
+        }
+
+        .chatbot-footer {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+        .chatbot-footer input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .chatbot-footer button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Pet Behavior Analysis Section */
+        .behavior-analysis {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .behavior-analysis h2 {
+            color: #333;
+        }
+
+        .behavior-analysis label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .behavior-analysis input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .behavior-analysis button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .behavior-analysis button:hover {
+            background-color: #0056b3;
+        }
+
+        #analysis-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #result-text {
+            margin-top: 10px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="https://www.svgrepo.com/show/373471/bithound.svg" alt="CurePet Logo">
+                <h1>CurePet</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Your Pet's Health, Our Priority</h2>
+            <p>Providing the best healthcare services for your furry friends.</p>
+            <a href="#services" class="btn">Explore Services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <h3>Regular Checkups</h3>
+                    <p>Comprehensive health checkups to ensure your pet is in top shape.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Emergency Care</h3>
+                    <p>24/7 emergency services for unexpected health issues.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Grooming</h3>
+                    <p>Professional grooming services to keep your pet looking their best.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pet Behavior Analysis Section -->
+    <section class="behavior-analysis">
+        <div class="container">
+            <h2>Pet Behavior Analysis</h2>
+            <p>Upload a video or audio file of your pet to analyze their behavior.</p>
+            <form id="behavior-form">
+                <label for="behavior-file">Upload File:</label>
+                <input type="file" id="behavior-file" name="behavior-file" accept="video/*, audio/*" required>
+                <button type="submit">Analyze Behavior</button>
+            </form>
+            <div id="analysis-result">
+                <h3>Analysis Result</h3>
+                <p id="result-text"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pet Dropdown and Details Section -->
+    <section class="pet-section">
+        <div class="container">
+            <h2>Select Your Pet</h2>
+            <div class="pet-dropdown">
+                <select id="petDropdown" onchange="showPetDetails()">
+                    <option value="">Select a pet</option>
+                    <option value="Max">Max</option>
+                    <option value="Bella">Bella</option>
+                    <option value="Charlie">Charlie</option>
+                    <option value="Lucy">Lucy</option>
+                    <option value="Cooper">Cooper</option>
+                    <option value="Daisy">Daisy</option>
+                    <option value="Rocky">Rocky</option>
+                    <option value="Luna">Luna</option>
+                    <option value="Milo">Milo</option>
+                    <option value="Sophie">Sophie</option>
+                </select>
+            </div>
+            <div id="petDetails" class="pet-card" style="display: none;">
+                <h3 id="petName"></h3>
+                <p><strong>Age:</strong> <span id="petAge"></span></p>
+                <p><strong>Breed:</strong> <span id="petBreed"></span></p>
+                <p><strong>Health Status:</strong> <span id="petHealth"></span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>At CurePet, we are dedicated to providing the highest quality healthcare for your pets. Our team of experienced veterinarians and staff are passionate about animal welfare and are here to support you and your pet's needs.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form id="contact-form">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 CurePet. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot Icon -->
+    <div class="chatbot-icon" onclick="toggleChatbot()">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="Chatbot Icon">
+    </div>
+
+    <!-- Chatbot Window -->
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <h3>Pet Assistant</h3>
+        </div>
+        <div class="chatbot-body" id="chatbotBody">
+            <p>Hello! How can I assist you with your pet today?</p>
+        </div>
+        <div class="chatbot-footer">
+            <input type="text" id="chatInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Pet details data
+        const pets = {
+            Max: { age: 3, breed: "Golden Retriever", health: "Healthy" },
+            Bella: { age: 5, breed: "Siamese Cat", health: "Needs Vaccination" },
+            Charlie: { age: 2, breed: "Bulldog", health: "Recovering from Surgery" },
+            Lucy: { age: 4, breed: "Poodle", health: "Healthy" },
+            Cooper: { age: 1, breed: "Beagle", health: "Under Observation" },
+            Daisy: { age: 6, breed: "Persian Cat", health: "Healthy" },
+            Rocky: { age: 7, breed: "German Shepherd", health: "Needs Dental Checkup" },
+            Luna: { age: 2, breed: "Ragdoll Cat", health: "Healthy" },
+            Milo: { age: 4, breed: "Labrador", health: "Needs Diet Plan" },
+            Sophie: { age: 3, breed: "Sphynx Cat", health: "Healthy" }
+        };
+
+        // Show pet details when a pet is selected
+        function showPetDetails() {
+            const dropdown = document.getElementById('petDropdown');
+            const selectedPet = dropdown.value;
+            const petDetails = document.getElementById('petDetails');
+            const petName = document.getElementById('petName');
+            const petAge = document.getElementById('petAge');
+            const petBreed = document.getElementById('petBreed');
+            const petHealth = document.getElementById('petHealth');
+
+            if (selectedPet && pets[selectedPet]) {
+                petName.textContent = selectedPet;
+                petAge.textContent = pets[selectedPet].age;
+                petBreed.textContent = pets[selectedPet].breed;
+                petHealth.textContent = pets[selectedPet].health;
+                petDetails.style.display = 'block';
+            } else {
+                petDetails.style.display = 'none';
+            }
+        }
+
+        // Chatbot functionality
+        function toggleChatbot() {
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            chatbotWindow.style.display = chatbotWindow.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function sendMessage() {
+            const chatInput = document.getElementById('chatInput');
+            const chatbotBody = document.getElementById('chatbotBody');
+            const userMessage = chatInput.value.trim();
+
+            if (userMessage) {
+                chatbotBody.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
+                const botResponse = getBotResponse(userMessage);
+                chatbotBody.innerHTML += `<p><strong>Bot:</strong> ${botResponse}</p>`;
+                chatInput.value = '';
+                chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            }
+        }
+
+        function getBotResponse(message) {
+            if (message.toLowerCase().includes('hello')) {
+                return 'Hi there! How can I help you with your pet?';
+            } else if (message.toLowerCase().includes('emergency')) {
+                return 'For emergencies, please contact our 24/7 helpline at +123-456-7890.';
+            } else if (message.toLowerCase().includes('grooming')) {
+                return 'We offer professional grooming services. Book an appointment today!';
+            } else {
+                return 'I’m here to help with your pet-related queries. Feel free to ask!';
+            }
+        }
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Thank you for contacting us! We will get back to you soon.');
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById

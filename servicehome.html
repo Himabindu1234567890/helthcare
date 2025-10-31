@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cure AI - Healthcare Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            text-align: center;
+            color: white;
+        }
+        header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .services {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px;
+            flex-wrap: wrap;
+        }
+        .service-card {
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+        h1 {
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #0077cc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Cure AI</h1>
+        <p>Your One-Stop Healthcare Solution for Humans & Pets</p>
+    </header>
+    
+    <section class="services">
+        <div class="service-card" id="human-care">
+            <h2>Human Healthcare</h2>
+            <p>Providing AI-driven healthcare solutions, online consultations, and personalized health plans.</p>
+            <ul>
+                <li>AI-powered diagnosis</li>
+                <li>Online doctor consultations</li>
+                <li>Medicine delivery</li>
+                <li>Personalized diet & exercise plans</li>
+            </ul>
+        </div>
+
+        <div class="service-card" id="pet-care">
+            <h2>Pet Healthcare</h2>
+            <p>Advanced AI for pet health monitoring, vet consultations, and customized diet plans.</p>
+            <ul>
+                <li>Virtual vet consultations</li>
+                <li>AI-based pet health tracking</li>
+                <li>Pet medicine delivery</li>
+                <li>Customized pet diet plans</li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', () => {
+                alert(`You selected: ${card.querySelector('h2').innerText}`);
+            });
+        });
+    </script>
+</body>
+</html>

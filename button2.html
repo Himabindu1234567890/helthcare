@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Menu</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom dropdown styling */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background: #f8f9fa;
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .dropdown-menu.show {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-5">
+
+    <nav class="w-64 bg-white shadow-lg p-5 rounded-md">
+        <div class="flex items-center space-x-3 mb-6">
+            <img src="profile.jpg" alt="Profile" class="w-12 h-12 rounded-full">
+            <div>
+                <h2 class="text-lg font-semibold">John Doe</h2>
+                <p class="text-sm text-gray-500">johndoe@example.com</p>
+            </div>
+        </div>
+
+        <ul class="space-y-4">
+            <!-- Dashboard Dropdown -->
+            <li x-data="{ open: false }" class="relative">
+                <button @click="open = !open" class="flex items-center justify-between w-full text-gray-700 hover:text-blue-500">
+                    <a href="#dashboard">📊 Dashboard</a>
+                    <svg :class="open ? 'rotate-180' : ''" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+
+                <!-- Dropdown Menu -->
+                <ul x-show="open" @click.away="open = false" class="dropdown-menu mt-2 w-full left-0 absolute bg-white border shadow-md rounded-md">
+                    <li>
+                        <a href="#overview" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">📌 Overview</a>
+                    </li>
+                    <li>
+                        <a href="#analytics" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">📊 Analytics</a>
+                    </li>
+                    <li>
+                        <a href="#reports" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">📄 Reports</a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Other Menu Items -->
+            <li><a href="#health-reports" class="block text-gray-700 hover:text-blue-500">📄 Health Reports</a></li>
+            <li><a href="#bills" class="block text-gray-700 hover:text-blue-500">💳 Bills</a></li>
+            <li><a href="#appointments" class="block text-gray-700 hover:text-blue-500">📅 Appointments</a></li>
+            <li><a href="#settings" class="block text-gray-700 hover:text-blue-500">⚙️ Settings</a></li>
+        </ul>
+    </nav>
+
+</body>
+</html>

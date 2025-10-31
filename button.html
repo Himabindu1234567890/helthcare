@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e3f2fd;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .navbar {
+            background-color: #1565c0;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .navbar ul li a:hover {
+            color: #ffeb3b;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            padding: 50px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.08);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        .care-button {
+            background: #1976d2;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .care-button img {
+            width: 40px;
+            height: 40px;
+        }
+        .care-button:hover {
+            background: #0d47a1;
+            transform: scale(1.05);
+        }
+        marquee {
+            background: #d32f2f;
+            color: white;
+            padding: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .card-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #333;
+        }
+        .cure-ai-info {
+  padding: 15px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cure-ai-info:hover {
+  background-color: #007BFF;
+  color: white;
+}
+
+.cure-ai-info:hover::after {
+  content: attr(data-description);
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}    .fall {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+    
+            background: linear-gradient(to right, #3a7bd5, #00d2ff);
+            overflow: hidden;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Falling Items */
+        .falling-item {
+            position: absolute;
+            font-size: 30px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <marquee>🌟 Welcome to the Healthcare Portal - Your Health, Our Priority! 🌟</marquee>
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1>Healthcare Portal</h1>
+        <ul>
+            <li><a href="file:///C:/rinex2/button.html">Home</a></li>
+            <li><a href="file:///C:/Users/jalla/Downloads/servicehome.html">Services</a></li>
+            <li><a href="file:///C:/rinex2/contacthome.html">Contact</a></li>
+            <li><a href="file:///C:/rinex2/symptom.html">symptom checker</a></li>
+        </ul>
+    </nav>
+        <!-- JavaScript for Falling Objects -->
+         <section class="fall">
+        <script>
+            function createFallingItem() {
+                const symbols = ["💊", "💖", "🩺", "💉", "✍", "0", "1"]; // Tablets, Heart, Stethoscope, Injections, Pens, Binary Digits
+                const item = document.createElement("div");
+                item.classList.add("falling-item");
+                item.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+                document.body.appendChild(item);
+    
+                // Random position at the top
+                item.style.left = Math.random() * window.innerWidth + "px";
+                item.style.animationDuration = (Math.random() * 3 + 2) + "s"; // Vary speed
+    
+                // Remove item after animation ends
+                setTimeout(() => {
+                    item.remove();
+                }, 5000);
+            }
+    
+            // Generate falling items at intervals
+            setInterval(createFallingItem, 500);
+        </script>
+        </section>
+   
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Human Care Card -->
+        <div class="card">
+            <button class="care-button" onclick="location.href='file:///C:/Users/jalla/Downloads/bindu5.html'">
+                <img src="https://cdn-icons-png.flaticon.com/128/9746/9746981.png" alt="Human Care" class="logo">
+                <span>Human Care</span>
+            </button>
+
+            <div class="card-content">
+                <!-- Add your content here -->
+            </div>
+        </div>
+
+        <!-- Pet Care Card -->
+        <div class="card">
+            <button class="care-button" onclick="location.href='file:///C:/rinex2/chetana1.html'">
+                <img src="https://cdn-icons-png.flaticon.com/128/16822/16822340.png" alt="Petcure" class="logo">
+                <span>Pet cure</span>
+            </button>
+            <div class="card-content">
+                <!-- Add your content here -->
+            </div>
+        </div>
+    </div>
+    <div class="cure-ai-info" data-description="Cure AI revolutionizes healthcare by using artificial intelligence to enhance medical diagnosis and treatment. It analyzes medical data like imaging and lab results to assist doctors in making accurate decisions. Cure AI predicts disease progression and recommends personalized treatments, reducing human errors. Its applications span radiology, oncology, and cardiology, transforming modern medicine. By integrating AI, Cure AI enhances efficiency, reduces costs, and improves patient outcomes globally.">
+  Touch me to knpw about Cure AI
+</div>
+
+
+</body>
+</html>

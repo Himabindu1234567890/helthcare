@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Checker</title>
+    <link rel="stylesheet" href="symptom.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🩺 Symptom Checker</h1>
+        <select id="theme-selector" onchange="changeTheme()">
+            <option value="light">🌞 Light Theme</option>
+            <option value="dark">🌙 Dark Theme</option>
+            <option value="medical">🏥 Medical Theme</option>
+        </select>
+        
+        <label for="symptoms">Select Symptoms:</label>
+        <select id="symptoms" multiple>
+            <option value="fever">🤒 Fever</option>
+            <option value="cough">🤧 Cough</option>
+            <option value="headache">😵 Headache</option>
+            <option value="fatigue">😴 Fatigue</option>
+            <option value="nausea">🤢 Nausea</option>
+            <option value="shortness of breath">😮‍💨 Shortness of Breath</option>
+        </select>
+        
+        <button onclick="checkSymptoms()">🔍 Check</button>
+        <div id="result"></div>
+    </div>
+    <script src="symptom.js"></script>
+</body>
+</html>
